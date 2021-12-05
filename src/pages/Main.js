@@ -1,12 +1,17 @@
 import { Grid, Typography } from '@mui/material';
 import React from 'react';
+import { Link } from 'react-router-dom';
+// import View from '../components/Post/View';
+import SimpleProfile from '../components/SimpleProfile';
 
 export default function Main() {
   return (
     <>
       <Grid container>
         <Grid item md={8} align="center">
-          <Typography>Tokenity</Typography>
+          <Link to="/main">
+            <Typography>Tokenity</Typography>
+          </Link>
         </Grid>
         <Grid item md={4}>
           <Typography>search</Typography>
@@ -16,22 +21,30 @@ export default function Main() {
         <Grid item md={3}>
           <Grid container>
             <Grid item md={12}>
-              <Typography>simple profile</Typography>
+              <SimpleProfile />
             </Grid>
             <Grid item md={12}>
-              <Typography>home</Typography>
+              <Link to="/main">
+                <Typography>home</Typography>
+              </Link>
             </Grid>
             <Grid item md={12}>
               <Typography>create</Typography>
             </Grid>
             <Grid item md={12}>
-              <Typography>trends</Typography>
+              <Link to="/trends">
+                <Typography>trends</Typography>
+              </Link>
             </Grid>
             <Grid item md={12}>
-              <Typography>wallet</Typography>
+              <Link to="/wallet">
+                <Typography>wallet</Typography>
+              </Link>
             </Grid>
             <Grid item md={12}>
-              <Typography>notification</Typography>
+              <Link to="/notification">
+                <Typography>notification</Typography>
+              </Link>
             </Grid>
           </Grid>
         </Grid>
@@ -50,6 +63,7 @@ export default function Main() {
           <Grid container>
             <Grid item md={12}>
               <Typography>Post1</Typography>
+              {/* <View /> */}
             </Grid>
             <Grid item md={12}>
               <Typography>Post2</Typography>
