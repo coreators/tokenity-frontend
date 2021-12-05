@@ -32,17 +32,17 @@ export default function Main() {
               <Typography>create</Typography>
             </Grid>
             <Grid item md={12}>
-              <Link to="/trends">
+              <Link to="/main/trends">
                 <Typography>trends</Typography>
               </Link>
             </Grid>
             <Grid item md={12}>
-              <Link to="/wallet">
+              <Link to="/main/wallet">
                 <Typography>wallet</Typography>
               </Link>
             </Grid>
             <Grid item md={12}>
-              <Link to="/notification">
+              <Link to="/main/notification">
                 <Typography>notification</Typography>
               </Link>
             </Grid>
