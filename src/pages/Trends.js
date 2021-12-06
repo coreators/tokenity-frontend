@@ -9,14 +9,7 @@ import {
 } from '@mui/material';
 import React from 'react';
 import FaceIcon from '@mui/icons-material/Face';
-
-function generate(element) {
-  return [...Array(30).keys()].map((value) =>
-    React.cloneElement(element, {
-      key: value,
-    }),
-  );
-}
+import { generate } from '../helpers';
 
 export default function Trends() {
   return (
