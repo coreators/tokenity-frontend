@@ -1,7 +1,15 @@
-import { Grid, Typography } from '@mui/material';
 import React from 'react';
+import { Grid, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+
 import SimpleProfile from './SimpleProfile';
+
+const Button = styled.span`
+  color: blue;
+  font-size: 18px;
+  font-family: 'Roboto';
+`;
 
 export default function LeftBar() {
   return (
@@ -11,6 +19,7 @@ export default function LeftBar() {
           <SimpleProfile />
         </Grid>
         <Grid item md={12}>
+            <Button>Home</Button>
           <Link to="/main">
             <Typography>home</Typography>
           </Link>
