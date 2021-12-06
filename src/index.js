@@ -7,6 +7,7 @@ import {
   Navigate,
   Outlet,
 } from 'react-router-dom';
+import styled from 'styled-components';
 import { Grid } from '@mui/material';
 import Main from './pages/Main';
 import Notification from './pages/Notification';
@@ -19,6 +20,12 @@ import RightBar from './components/RightBar';
 import Profile from './pages/Profile';
 import GlobalFonts from './assets/fonts/fonts';
 
+const Container = styled.div`
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 70px;
+`;
 ReactDOM.render(
   <React.StrictMode>
     <GlobalFonts />
@@ -30,13 +37,15 @@ ReactDOM.render(
           element={
             <>
               <HeaderBar />
-              <Grid container>
-                <LeftBar />
-                <Grid item md={6}>
-                  <Outlet />
+              <Container>
+                <Grid container>
+                  <LeftBar />
+                  <Grid item md={6}>
+                    <Outlet />
+                  </Grid>
+                  <RightBar />
                 </Grid>
-                <RightBar />
-              </Grid>
+              </Container>
             </>
           }
         >

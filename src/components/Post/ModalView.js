@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import Header from '../Profile/Header';
 import CloseButton from '../CloseButton';
 
-import { disableColor } from '../../assets/fontColor';
+import { disableColor } from '../../assets/colors';
 import IconSet from '../Icons/IconSet';
 import Reply from '../Reply';
 

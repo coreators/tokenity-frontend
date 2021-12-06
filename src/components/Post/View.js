@@ -5,7 +5,7 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 
 import Header from '../Profile/Header';
-import { disableColor } from '../../assets/fontColor';
+import { disableColor } from '../../assets/colors';
 import Reply from '../Reply';
 import IconSet from '../Icons/IconSet';
 

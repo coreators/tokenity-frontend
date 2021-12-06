@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import InputBase from '@mui/material/InputBase';
 
-import { disableColor } from '../../assets/fontColor';
+import { disableColor } from '../../assets/colors';
 
 const Container = styled.div`
   // position: absolute;

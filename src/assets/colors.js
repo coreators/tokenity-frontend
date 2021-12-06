@@ -22,6 +22,8 @@ export const blueColor_10p = 'rgba(106, 121, 247, 0.1)';
 export const greenColor = 'rgba(11, 156, 49, 1)';
 export const greenColor_10p = 'rgba(11, 156, 49, 0.1)';
 
+export const headerColor = 'white';
+
 export const paymentTypeColor = [
     'red',
     'blue',
