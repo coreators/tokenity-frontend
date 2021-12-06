@@ -14,7 +14,7 @@ const Container = styled.div`
   box-shadow: 24;
 `;
 
-const View = () => {
+const ModalView = () => {
   return (
     <Container>
       <Typography
@@ -32,4 +32,4 @@ const View = () => {
   );
 };
 
-export default View;
+export default ModalView;

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
-import View from '../../components/Post/View';
+import ModalView from '../../components/Post/ModalView';
 
 const Background = styled.div`
 `;
@@ -24,7 +24,7 @@ const Popup = () => {
         aria-describedby="modal-modal-description"
       >
         <Box>
-          <View />
+          <ModalView />
         </Box>
       </Modal>
     </Background>
