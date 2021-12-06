@@ -21,6 +21,7 @@ const PostButton = styled.span`
   align-items: center;
   color: blue;
   cursor: pointer;
+  font-family: 'Roboto';
 `;
 
 const Reply = () => {

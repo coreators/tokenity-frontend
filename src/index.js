@@ -17,9 +17,11 @@ import HeaderBar from './components/HeaderBar';
 import LeftBar from './components/LeftBar';
 import RightBar from './components/RightBar';
 import Profile from './pages/Profile';
+import GlobalFonts from './assets/fonts/fonts';
 
 ReactDOM.render(
   <React.StrictMode>
+    <GlobalFonts />
     <BrowserRouter>
       <Routes>
         <Route path="/login" element={<Login />} />

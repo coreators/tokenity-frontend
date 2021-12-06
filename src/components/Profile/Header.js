@@ -17,7 +17,8 @@ const Image = styled.img`
 const Name = styled.span`
   margin-left: 20px;
   font-size: 18px;
-  font-weight: bold;
+  font-weight: 700;
+  font-family: 'Roboto';
 `;
 
 const Header = () => {

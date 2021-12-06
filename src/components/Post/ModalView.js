@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-import img2 from '../../assets/images/imgTest.jpeg';
 import Header from '../Profile/Header';
 import CloseButton from '../CloseButton';
 
@@ -53,16 +52,17 @@ const Tail = styled.div`
   flex: 1;
   padding-left: 15px;
   padding-top: 15px;
+  font-family: 'Roboto';
 `;
 const Date = styled.span`
   font-size: 12px;
   color: grey;
 `;
 
-const ModalView = ({handleClose}) => {
+const ModalView = ({handleClose, img}) => {
   return (
     <Container>
-      <ImageContainer src={img2} />
+      <ImageContainer src={img} />
       <Content>
         <Profile>
           <Header />
@@ -82,5 +82,6 @@ const ModalView = ({handleClose}) => {
 
 ModalView.propTypes = {
   handleClose: PropTypes.func,
+  img: PropTypes.any,
 };
 export default ModalView;
