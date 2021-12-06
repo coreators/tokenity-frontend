@@ -9,14 +9,14 @@ const Container = styled.div`
   cursor: pointer;
 `;
 const Image = styled.img`
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   object-fit: cover;
   border-radius: 100px;
 `;
 const Name = styled.span`
   margin-left: 20px;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: bold;
 `;
 

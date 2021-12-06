@@ -18,10 +18,10 @@ export default function Main() {
       </Grid>
       <Grid container>
         <Grid item md={12}>
-          <View text={'Post1'} />
+          <View />
         </Grid>
         <Grid item md={12}>
-          <View text={'Post2'} />
+          <View />
         </Grid>
       </Grid>
     </>
