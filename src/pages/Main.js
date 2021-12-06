@@ -1,6 +1,6 @@
 import { Grid, Typography } from '@mui/material';
 import React from 'react';
-// import View from '../components/Post/View';
+import View from '../components/Post/View';
 
 export default function Main() {
   return (
@@ -18,11 +18,10 @@ export default function Main() {
       </Grid>
       <Grid container>
         <Grid item md={12}>
-          <Typography>Post1</Typography>
-          {/* <View /> */}
+          <View text={'Post1'} />
         </Grid>
         <Grid item md={12}>
-          <Typography>Post2</Typography>
+          <View text={'Post2'} />
         </Grid>
       </Grid>
     </>

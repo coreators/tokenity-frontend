@@ -1,21 +1,21 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
-import ModalView from '../Post/ModalView';
 
-const Background = styled.div`
-`;
+import ModalView from './ModalView';
 
-const Popup = () => {
-  const [open, setOpen] = useState(true);
+const Container = styled.div``;
+
+const View = ({ text }) => {
+  const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
   return (
-    <Background>
-      <Button onClick={handleOpen}>Open modal</Button>
+    <div>
+      <Container onClick={handleOpen}>{text}</Container>
 
       <Modal
         open={open}
@@ -24,11 +24,15 @@ const Popup = () => {
         aria-describedby="modal-modal-description"
       >
         <Box>
-          <ModalView />
+          <ModalView handleClose={handleClose} />
         </Box>
       </Modal>
-    </Background>
+    </div>
   );
 };
 
-export default Popup;
+View.propTypes = {
+  text: PropTypes.string,
+};
+
+export default View;
