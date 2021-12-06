@@ -1,5 +1,30 @@
+import { Grid, Typography } from '@mui/material';
 import React from 'react';
+// import View from '../components/Post/View';
 
 export default function Main() {
-  return <div>Main</div>;
+  return (
+    <>
+      <Grid container>
+        <Grid item md={4}>
+          <Typography>Global</Typography>
+        </Grid>
+        <Grid item md={4}>
+          <Typography>following</Typography>
+        </Grid>
+        <Grid item md={4}>
+          <Typography>NFTs</Typography>
+        </Grid>
+      </Grid>
+      <Grid container>
+        <Grid item md={12}>
+          <Typography>Post1</Typography>
+          {/* <View /> */}
+        </Grid>
+        <Grid item md={12}>
+          <Typography>Post2</Typography>
+        </Grid>
+      </Grid>
+    </>
+  );
 }

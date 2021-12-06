@@ -17,17 +17,17 @@ const Container = styled.div`
 const View = () => {
   return (
     <Container>
-        <Typography
-          id="modal-modal-title"
-          variant="h6"
-          component="h2"
-          color="black"
-        >
-          Text in a modal
-        </Typography>
-        <Typography id="modal-modal-description" sx={{ mt: 2 }} color="black">
-          Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-        </Typography>
+      <Typography
+        id="modal-modal-title"
+        variant="h6"
+        component="h2"
+        color="black"
+      >
+        Text in a modal
+      </Typography>
+      <Typography id="modal-modal-description" sx={{ mt: 2 }} color="black">
+        Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+      </Typography>
     </Container>
   );
 };
