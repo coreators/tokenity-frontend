@@ -1,13 +1,16 @@
 import React from 'react';
 import { Grid, Typography } from '@mui/material';
 import FaceIcon from '@mui/icons-material/Face';
+import { Link } from 'react-router-dom';
 
 export default function SimpleProfile() {
   return (
     <>
       <Grid container>
         <Grid item md={3}>
-          <FaceIcon />
+          <Link to="/main/profile">
+            <FaceIcon />
+          </Link>
         </Grid>
         <Grid item md={9}>
           <Grid container>
