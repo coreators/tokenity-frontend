@@ -20,3 +20,9 @@ export const tokenPrices = [
 ];
 
 export const avatars = [img1, img2, img3, img4, img5];
+
+export const tokens = tokenNames.map((name, index) => ({
+  name,
+  price: tokenPrices[index],
+  avatar: avatars[index],
+}));

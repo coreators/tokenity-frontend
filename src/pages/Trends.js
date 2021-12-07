@@ -8,15 +8,9 @@ import {
   Typography,
 } from '@mui/material';
 import React from 'react';
-import { tokenNames, tokenPrices, avatars } from '../dummyData';
+import { tokens } from '../dummyData';
 
 export default function Trends() {
-  const tokens = tokenNames.map((name, index) => ({
-    name,
-    price: tokenPrices[index],
-    avatar: avatars[index],
-  }));
-
   return (
     <Grid container rowSpacing={2}>
       <Grid item md={12}>
