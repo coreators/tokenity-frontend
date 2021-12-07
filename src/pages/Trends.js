@@ -1,42 +1,47 @@
 import {
   Avatar,
   Grid,
-  List,
   ListItem,
   ListItemAvatar,
   ListItemText,
   Typography,
 } from '@mui/material';
 import React from 'react';
-import FaceIcon from '@mui/icons-material/Face';
-import { generate } from '../helpers';
+import { tokenNames, tokenPrices, avatars } from '../dummyData';
 
 export default function Trends() {
+  const tokens = tokenNames.map((name, index) => ({
+    name,
+    price: tokenPrices[index],
+    avatar: avatars[index],
+  }));
+
   return (
-    <>
-      <List>
-        {generate(
-          <ListItem>
+    <Grid container>
+      {/* <Grid item md={12}>
+        <Typography variant="h5">Trends</Typography>
+      </Grid> */}
+      <Grid item md={12}>
+        {tokens.map(({ name, price, avatar }, index) => (
+          <ListItem key={index}>
             <ListItemAvatar>
-              <Avatar>
-                <FaceIcon />
-              </Avatar>
+              <Avatar src={avatar} />
             </ListItemAvatar>
             <ListItemText
               primary={
                 <Grid container>
                   <Grid item md={8}>
-                    <Typography>이름</Typography>
+                    <Typography>{name}</Typography>
                   </Grid>
                   <Grid item md={4}>
-                    <Typography>코인 가격</Typography>
+                    <Typography>~${price}</Typography>
                   </Grid>
                 </Grid>
               }
             />
-          </ListItem>,
-        )}
-      </List>
-    </>
+          </ListItem>
+        ))}
+      </Grid>
+    </Grid>
   );
 }
