@@ -1,5 +1,6 @@
 import {
   Avatar,
+  Divider,
   Grid,
   ListItem,
   ListItemAvatar,
@@ -7,20 +8,17 @@ import {
   Typography,
 } from '@mui/material';
 import React from 'react';
-import { tokenNames, tokenPrices, avatars } from '../dummyData';
+import { tokens } from '../dummyData';
 
 export default function Trends() {
-  const tokens = tokenNames.map((name, index) => ({
-    name,
-    price: tokenPrices[index],
-    avatar: avatars[index],
-  }));
-
   return (
-    <Grid container>
-      {/* <Grid item md={12}>
-        <Typography variant="h5">Trends</Typography>
-      </Grid> */}
+    <Grid container rowSpacing={2}>
+      <Grid item md={12}>
+        <Typography variant="h4">Trends</Typography>
+      </Grid>
+      <Grid item md={12}>
+        <Divider variant="middle" />
+      </Grid>
       <Grid item md={12}>
         {tokens.map(({ name, price, avatar }, index) => (
           <ListItem key={index}>

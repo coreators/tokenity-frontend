@@ -7,20 +7,15 @@ import {
   Typography,
 } from '@mui/material';
 import React from 'react';
-import { tokenNames, tokenPrices, avatars } from '../dummyData';
+import { tokens } from '../dummyData';
 
 export default function RightBar() {
-  const tokens = tokenNames.map((name, index) => ({
-    name,
-    price: tokenPrices[index],
-    avatar: avatars[index],
-  }));
   return (
     <Grid item md={3}>
       <Grid container>
         <Grid item md={1} />
         <Grid item md={11}>
-          <Typography>Top {tokenNames.length}</Typography>
+          <Typography>Top 5</Typography>
         </Grid>
         <Grid item md={12}>
           {tokens.map(({ name, price, avatar }, index) => (
