@@ -1,5 +1,6 @@
 import {
   Avatar,
+  Divider,
   Grid,
   ListItem,
   ListItemAvatar,
@@ -17,10 +18,13 @@ export default function Trends() {
   }));
 
   return (
-    <Grid container>
-      {/* <Grid item md={12}>
-        <Typography variant="h5">Trends</Typography>
-      </Grid> */}
+    <Grid container rowSpacing={2}>
+      <Grid item md={12}>
+        <Typography variant="h4">Trends</Typography>
+      </Grid>
+      <Grid item md={12}>
+        <Divider variant="middle" />
+      </Grid>
       <Grid item md={12}>
         {tokens.map(({ name, price, avatar }, index) => (
           <ListItem key={index}>
