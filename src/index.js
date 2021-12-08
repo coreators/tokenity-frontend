@@ -1,63 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-  Navigate,
-  Outlet,
-} from 'react-router-dom';
-import styled from 'styled-components';
-import { Grid } from '@mui/material';
-import Main from './pages/Main';
-import Notification from './pages/Notification';
-import Login from './pages/Login';
-import Trends from './pages/Trends';
-import Wallet from './pages/Wallet';
-import HeaderBar from './components/HeaderBar';
-import LeftBar from './components/LeftBar';
-import RightBar from './components/RightBar';
-import Profile from './pages/Profile';
+import { BrowserRouter } from 'react-router-dom';
+import { Provider as ReduxProvider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
+
+import { store, persistor } from './modules/store';
+import App from './App';
+
 import GlobalFonts from './assets/fonts/fonts';
 
-const Container = styled.div`
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 70px;
-`;
 ReactDOM.render(
   <React.StrictMode>
     <GlobalFonts />
-    <BrowserRouter>
-      <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route
-          path="/main"
-          element={
-            <>
-              <HeaderBar />
-              <Container>
-                <Grid container>
-                  <LeftBar />
-                  <Grid item md={6}>
-                    <Outlet />
-                  </Grid>
-                  <RightBar />
-                </Grid>
-              </Container>
-            </>
-          }
-        >
-          <Route path="/main" element={<Main />} />
-          <Route path="/main/profile" element={<Profile />} />
-          <Route path="/main/trends" element={<Trends />} />
-          <Route path="/main/wallet" element={<Wallet />} />
-          <Route path="/main/notification" element={<Notification />} />
-        </Route>
-        <Route path="/*" element={<Navigate replace to="/main" />} />
-      </Routes>
-    </BrowserRouter>
+    <ReduxProvider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </PersistGate>
+    </ReduxProvider>
   </React.StrictMode>,
   document.getElementById('root'),
 );
