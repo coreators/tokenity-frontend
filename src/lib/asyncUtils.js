@@ -1,4 +1,4 @@
-import {call, put} from 'typed-redux-saga'
+import {call, put} from 'redux-saga/effects';
 
 // 프로미스를 기다렸다가 결과를 디스패치하는 사가
 export const createPromiseSaga = (type, promiseCreator) => {
@@ -6,10 +6,10 @@ export const createPromiseSaga = (type, promiseCreator) => {
   return function* saga(action) {
     try {
       // 재사용성을 위하여 promiseCreator 의 파라미터엔 action.payload 값을 넣도록 설정합니다.
-      const payload = yield* call(promiseCreator, action.payload);
-      yield* put({ type: SUCCESS, payload });
+      const payload = yield call(promiseCreator, action.payload);
+      yield put({ type: SUCCESS, payload });
     } catch (e) {
-      yield* put({ type: ERROR, error: true, payload: e });
+      yield put({ type: ERROR, error: true, payload: e });
     }
   };
 };
@@ -21,14 +21,14 @@ export const createPromiseSagas = (type, promiseCreator) => {
   return function* saga(action) {
     try {
       // 재사용성을 위하여 promiseCreator 의 파라미터엔 action.payload 값을 넣도록 설정합니다.
-      const payload = []
+      const payload = [];
       for (let i = 0; i < action.payload.length; i++) {
-        const temp = yield* call(promiseCreator, action.payload[i]);
-        payload.push(temp)
+        const temp = yield call(promiseCreator, action.payload[i]);
+        payload.push(temp);
       }
-      yield* put({ type: SUCCESS, payload });
+      yield put({ type: SUCCESS, payload });
     } catch (e) {
-      yield* put({ type: ERROR, error: true, payload: e });
+      yield put({ type: ERROR, error: true, payload: e });
     }
   };
 };
@@ -41,10 +41,10 @@ export const createPromiseSagaById = (type, promiseCreator) => {
   return function* saga(action) {
     const id = action.meta;
     try {
-      const payload = yield* call(promiseCreator, action.payload);
-      yield* put({ type: SUCCESS, payload, meta: id });
+      const payload = yield call(promiseCreator, action.payload);
+      yield put({ type: SUCCESS, payload, meta: id });
     } catch (e) {
-      yield* put({ type: ERROR, error: e, meta: id });
+      yield put({ type: ERROR, error: e, meta: id });
     }
   };
 };
@@ -57,7 +57,7 @@ export const reducerUtils = {
     loading: false,
     data: initialData,
     error: null,
-    reRender: false
+    reRender: false,
   }),
   // 로딩중 상태. prevState의 경우엔 기본값은 null 이지만
   // 따로 값을 지정하면 null 로 바꾸지 않고 다른 값을 유지시킬 수 있습니다.
@@ -65,22 +65,22 @@ export const reducerUtils = {
     loading: true,
     data: prevState,
     error: null,
-    reRender: false
+    reRender: false,
   }),
   // 성공 상태
   success: (payload) => ({
     loading: false,
     data: payload,
     error: null,
-    reRender: false
+    reRender: false,
   }),
   // 실패 상태
   error: (error)=> ({
     loading: false,
     data: null,
     error: error,
-    reRender: false
-  })
+    reRender: false,
+  }),
 };
 
 // 비동기 관련 액션들을 처리하는 리듀서를 만들어줍니다.
@@ -92,25 +92,26 @@ export const handleAsyncActions = (type, key, keepData = false) => {
       case type:
         return {
           ...state,
-          [key]: reducerUtils.loading(keepData ? state[key].data : null)
+          [key]: reducerUtils.loading(keepData ? state[key].data : null),
         };
       case SUCCESS:
         return {
           ...state,
-          [key]: reducerUtils.success(action.payload)
+          [key]: reducerUtils.success(action.payload),
         };
       case ERROR:
         return {
           ...state,
-          [key]: reducerUtils.error(action.payload)
+          [key]: reducerUtils.error(action.payload),
         };
-      case RERENDER:
-        let newData = state[key]
-        newData.reRender = !newData.reRender
+      case RERENDER: {
+        let newData = state[key];
+        newData.reRender = !newData.reRender;
         return {
           ...state,
-          [key]: newData
-        }
+          [key]: newData,
+        };
+      }
       default:
         return state;
     }
@@ -130,25 +131,25 @@ export const handleAsyncActionsById = (type, key, keepData = false) => {
             ...state[key],
             [id]: reducerUtils.loading(
               // state[key][id]가 만들어져있지 않을 수도 있으니까 유효성을 먼저 검사 후 data 조회
-              keepData ? state[key][id] && state[key][id].data : null
-            )
-          }
+              keepData ? state[key][id] && state[key][id].data : null,
+            ),
+          },
         };
       case SUCCESS:
         return {
           ...state,
           [key]: {
             ...state[key],
-            [id]: reducerUtils.success(action.payload)
-          }
+            [id]: reducerUtils.success(action.payload),
+          },
         };
       case ERROR:
         return {
           ...state,
           [key]: {
             ...state[key],
-            [id]: reducerUtils.error(action.payload)
-          }
+            [id]: reducerUtils.error(action.payload),
+          },
         };
       default:
         return state;
