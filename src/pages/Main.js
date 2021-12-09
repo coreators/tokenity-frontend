@@ -23,11 +23,7 @@ export default function Main() {
   return (
     <Grid container rowSpacing={2}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-        <Tabs
-          value={value}
-          onChange={handleChange}
-          aria-label="basic tabs example"
-        >
+        <Tabs value={value} onChange={handleChange}>
           <Tab label="Global" />
           <Tab label="Following" />
           <Tab label="NFTs" />
