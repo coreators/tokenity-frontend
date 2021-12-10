@@ -22,30 +22,6 @@ export const blueColor_10p = 'rgba(106, 121, 247, 0.1)';
 export const greenColor = 'rgba(11, 156, 49, 1)';
 export const greenColor_10p = 'rgba(11, 156, 49, 0.1)';
 
+export const yellowColor = '#FFCD01';
+
 export const headerColor = 'white';
-
-export const paymentTypeColor = [
-    'red',
-    'blue',
-    'orange',
-    'yellow',
-];
-
-export const paymentTypeWayColor = [
-    'green',
-    'skyblue',
-    'purple',
-];
-
-export const classTypeColor = [
-    '#F01616',
-    '#0FBCF9',
-];
-
-export const chartColorSet = [
-    'nivo',
-    'accent',
-    'paired',
-    // 'category10'
-    'yellow_green_blue',
-];

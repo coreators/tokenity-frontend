@@ -15,7 +15,7 @@ const Image = styled.img`
   border-radius: 100px;
 `;
 const Name = styled.span`
-  margin-left: 20px;
+  margin-left: 15px;
   font-size: 18px;
   font-weight: 700;
   font-family: 'Roboto';

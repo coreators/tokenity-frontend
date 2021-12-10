@@ -14,7 +14,10 @@ const persistConfig = {
   // Whitelist (Save Specific Reducers)
   whitelist: [],
   // Blacklist (Don't Save Specific Reducers)
-  blacklist: ['posts'],
+  blacklist: [
+    'posts',
+    'account',
+  ],
 };
 
 export const customHistory = createBrowserHistory();

@@ -4,7 +4,7 @@ import {
   GET_POSTS_ERROR,
   GET_POSTS_RERENDER,
   GET_POSTS_SUCCESS,
-  INIT,
+  INIT_POSTS,
   SET_POST,
   SET_POST_ERROR,
   SET_POST_SUCCESS,
@@ -17,7 +17,7 @@ const initialState = {
 
 export default function posts(state = initialState, action) {
   switch (action.type) {
-    case INIT:
+    case INIT_POSTS:
       return {
         ...state,
       };
