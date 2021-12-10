@@ -44,6 +44,14 @@ export default function LeftBar() {
                 </Link>
               </Button>
             </Grid>
+            <Grid item md={12} />
+            <Grid item md={12}>
+              <Button variant="text">
+                <Link to="/main/profile" state={{data}} style={{ textDecoration: 'none' }}>
+                  Profile
+                </Link>
+              </Button>
+            </Grid>
             <Grid item md={12}>
               <Button variant="text">
                 <Link to="/main/wallet" style={{ textDecoration: 'none' }}>

@@ -12,12 +12,40 @@ import {
   Typography,
 } from '@mui/material';
 import React from 'react';
-import ContentCopyIcon from '@mui/icons-material/ContentCopy';
+import { useNavigate, useLocation } from 'react-router-dom';
+import styled from 'styled-components';
+// import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import { Box } from '@mui/system';
 import { avatar, postImg, postImgs, tokens } from '../dummyData';
+import { yellowColor } from '../assets/colors';
+import UnauthorizedPage from '../components/UnauthorizedPage';
+
+const Button = styled.span`
+  width: 120px;
+  height: 30px;
+  background-color: black;
+  border-radius: 5px;
+  color: white;
+  font-family: 'Roboto';
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  cursor: pointer;
+  margin-top: 10px;
+
+  &:hover {
+    color: ${yellowColor};
+  }
+`;
 
 export default function Profile() {
   const [value, setValue] = React.useState(0);
+  const navigate = useNavigate();
+  const { state } = useLocation();
+  const data = state.data;
+
+  console.log(state);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -130,16 +158,39 @@ export default function Profile() {
     }
   };
 
+  if (!data) return <UnauthorizedPage />;
   return (
     <>
       <Grid container rowSpacing={4}>
-        <Grid item md={5} align="center">
-          <Avatar src={avatar} sx={{ width: 150, height: 150 }} />
+        <Grid item md={4} align="center">
+          <Avatar
+            src={avatar}
+            sx={{ width: 120, height: 120 }}
+            style={{ border: '1px solid black' }}
+          />
         </Grid>
-        <Grid item md={7}>
+        <Grid item md={8}>
           <Grid container rowSpacing={2}>
             <Grid item md={12}>
-              <Typography variant="h4">cosmonaut</Typography>
+              <Typography
+                variant="h4"
+                style={{ overflow: 'hidden', textOverflow: 'ellipsis' }}
+              >
+                {data.name}
+              </Typography>
+            </Grid>
+            <Grid item md={12}>
+              <Button
+                onClick={() =>
+                  navigate('/main/profile/update', {
+                    state: {
+                      data,
+                    },
+                  })
+                }
+              >
+                Update Profile
+              </Button>
             </Grid>
             <Grid item md={12}>
               <Grid container rowSpacing={1}>
@@ -153,17 +204,6 @@ export default function Profile() {
                     ~$128.85
                   </Typography>
                 </Grid>
-                <Grid item md={4}>
-                  <Typography style={{ fontWeight: 'bold' }}>PubKey</Typography>
-                </Grid>
-                <Grid item md={5}>
-                  <Typography style={{ fontWeight: 'bold' }}>
-                    BC1YLiFNARS...
-                  </Typography>
-                </Grid>
-                <Grid item md={3}>
-                  <ContentCopyIcon />
-                </Grid>
               </Grid>
             </Grid>
             <Grid item md={12}>
@@ -172,7 +212,7 @@ export default function Profile() {
                   <Typography>164 posts</Typography>
                 </Grid>
                 <Grid item md={4}>
-                  <Typography>742 follwers</Typography>
+                  <Typography>742 followers</Typography>
                 </Grid>
                 <Grid item md={4}>
                   <Typography>76 following</Typography>
@@ -180,10 +220,16 @@ export default function Profile() {
               </Grid>
             </Grid>
             <Grid item md={12}>
-              <Typography>Hello~ I`m cosmonaut. </Typography>
-              <Typography>Nice to meet you!</Typography>
+              <Typography>{data.description}</Typography>
             </Grid>
           </Grid>
+        </Grid>
+
+        <Grid item md={2}>
+          <Typography style={{ fontWeight: 'bold' }}>Address</Typography>
+        </Grid>
+        <Grid item md={7}>
+          <Typography style={{ fontWeight: 'bold' }}>{data.address}</Typography>
         </Grid>
         <Grid item md={12}>
           <Box>
@@ -201,3 +247,7 @@ export default function Profile() {
     </>
   );
 }
+
+// Profile.propTypes = {
+//   data: PropTypes.any,
+// };
