@@ -3,14 +3,14 @@ import { Secp256k1HdWallet } from '@cosmjs/launchpad';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-import TextField from '@mui/material/TextField';
 import Alert from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
 
 import CloseButton from '../CloseButton';
-
+import { CssTextField } from '../../styled/TextField';
 import { yellowColor } from '../../assets/colors';
 import ResultWallet from './ResultWallet';
+
 
 const Container = styled.div`
   display: flex;
@@ -33,27 +33,6 @@ const Title = styled.span`
   margin-left: auto;
   margin-right: auto;
 `;
-const CssTextField = styled(TextField)({
-  '& label.Mui-focused': {
-    color: 'green',
-  },
-  '& .MuiInput-underline:after': {
-    borderBottomColor: 'green',
-  },
-  '& .MuiOutlinedInput-root': {
-    '& fieldset': {
-      borderColor: 'black',
-      marginBottom: '8px',
-    },
-    '&:hover fieldset': {
-      borderColor: 'green',
-      borderWidth: '2px',
-    },
-    '&.Mui-focused fieldset': {
-      borderColor: 'green',
-    },
-  },
-});
 const Button = styled.span`
   width: 100%;
   height: 50px;

@@ -17,6 +17,7 @@ import HeaderBar from './components/HeaderBar';
 import LeftBar from './components/LeftBar';
 import RightBar from './components/RightBar';
 import Profile from './pages/Profile';
+import ProfileUpdate from './pages/ProfileUpdate';
 
 const Container = styled.div`
   max-width: 1200px;
@@ -47,6 +48,7 @@ const App = () => {
         >
           <Route path="/main" element={<Main />} />
           <Route path="/main/profile" element={<Profile />} />
+          <Route path="/main/profile/update" element={<ProfileUpdate />} />
           <Route path="/main/trends" element={<Trends />} />
           <Route path="/main/wallet" element={<Wallet />} />
           <Route path="/main/notification" element={<Notification />} />

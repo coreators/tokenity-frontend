@@ -12,6 +12,7 @@ const Image = styled.img`
   width: 40px;
   height: 40px;
   object-fit: cover;
+  border: 1px solid black;
   border-radius: 100px;
 `;
 const Name = styled.span`
