@@ -1,0 +1,2 @@
+export const BACKUP_WARNING = 'Your secret backup phrase makes it easy to back up and restore your account.';
+export const BACKUP_WARNING2 = 'WARNING: Never disclose your backup phrase. Anyone with this phrase can take your coin forever.';
