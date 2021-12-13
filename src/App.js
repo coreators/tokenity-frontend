@@ -1,25 +1,61 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import {
+  Routes,
+  Route,
+  Navigate,
+  Outlet,
+} from 'react-router-dom';
+import styled from 'styled-components';
+import { Grid } from '@mui/material';
 
-function App() {
+import Main from './pages/Main';
+import Notification from './pages/Notification';
+import Login from './pages/Login';
+import Trends from './pages/Trends';
+import Wallet from './pages/Wallet';
+import HeaderBar from './components/HeaderBar';
+import LeftBar from './components/LeftBar';
+import RightBar from './components/RightBar';
+import Profile from './pages/Profile';
+import ProfileUpdate from './pages/ProfileUpdate';
+
+const Container = styled.div`
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 70px;
+`;
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route
+          path="/main"
+          element={
+            <>
+              <HeaderBar />
+              <Container>
+                <Grid container>
+                  <LeftBar />
+                  <Grid item md={6}>
+                    <Outlet />
+                  </Grid>
+                  <RightBar />
+                </Grid>
+              </Container>
+            </>
+          }
         >
-          Learn React
-        </a>
-      </header>
-    </div>
+          <Route path="/main" element={<Main />} />
+          <Route path="/main/profile" element={<Profile />} />
+          <Route path="/main/profile/update" element={<ProfileUpdate />} />
+          <Route path="/main/trends" element={<Trends />} />
+          <Route path="/main/wallet" element={<Wallet />} />
+          <Route path="/main/notification" element={<Notification />} />
+        </Route>
+        <Route path="/*" element={<Navigate replace to="/main" />} />
+      </Routes>
   );
-}
+};
 
 export default App;

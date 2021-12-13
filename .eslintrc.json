@@ -1,0 +1,106 @@
+{
+  "root": true,
+  "env": {
+    "es6": true,
+    "node": true
+  },
+  "globals": {
+    "process": "readonly"
+  },
+  "parserOptions": {
+    "ecmaVersion": 10
+  },
+  "plugins": ["react-hooks"],
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "plugin:react/recommended"
+  ],
+  "rules": {
+    "vars-on-top": "error",
+    "block-scoped-var": "error",
+    "quotes": [
+      "error",
+      "single",
+      {
+        "allowTemplateLiterals": true
+      }
+    ],
+    "semi": [
+      "error",
+      "always"
+    ],
+    "space-before-function-paren": [
+      "error",
+      {
+        "anonymous": "always",
+        "named": "never"
+      }
+    ],
+    "curly": [
+      "error",
+      "multi-line"
+    ],
+    "comma-dangle": [
+      "error",
+      "always-multiline"
+    ],
+    "max-len": [
+      "error",
+      {
+        "code": 80,
+        "ignoreUrls": true,
+        "ignoreComments": true,
+        "ignoreStrings": true,
+        "ignoreTemplateLiterals": true,
+        "ignoreRegExpLiterals": true
+      }
+    ],
+    "import/namespace": [
+      "error",
+      {
+        "allowComputed": true
+      }
+    ],
+    "no-self-assign": [
+      "error",
+      {
+        "props": false
+      }
+    ],
+    "react-hooks/rules-of-hooks": "error",
+    "react/jsx-closing-bracket-location": "error",
+    "react/jsx-tag-spacing": "error",
+    "import/order": ["error"],
+    "import/no-named-as-default-member": "off"
+  },
+  "overrides": [
+    {
+      "files": [
+        "*/**/*.js"
+      ],
+      "excludedFiles": [
+        "{__mocks__,scripts}/**/*.js"
+      ],
+      "parser": "babel-eslint",
+      "env": {
+        "node": false,
+        "browser": true
+      }
+    },
+    {
+      "files": [
+        "*/**/*.spec.js"
+      ],
+      "env": {
+        "jest": true
+      }
+    }
+  ]
+}
