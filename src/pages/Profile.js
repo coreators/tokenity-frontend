@@ -16,7 +16,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 // import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import { Box } from '@mui/system';
-import { avatar, postImg, postImgs, tokens } from '../dummyData';
+import { postImg, postImgs, tokens } from '../dummyData';
 import { yellowColor } from '../assets/colors';
 import UnauthorizedPage from '../components/UnauthorizedPage';
 
@@ -126,7 +126,7 @@ export default function Profile() {
           >
             <Grid container>
               <Grid item md={1}>
-                <Avatar src={avatar} />
+                <Avatar src={data.avatar} />
               </Grid>
               <Grid item md={11}>
                 <Grid container rowSpacing={1}>
@@ -164,7 +164,7 @@ export default function Profile() {
       <Grid container rowSpacing={4}>
         <Grid item md={4} align="center">
           <Avatar
-            src={avatar}
+            src={data.avatar}
             sx={{ width: 120, height: 120 }}
             style={{ border: '1px solid black' }}
           />
