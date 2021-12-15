@@ -2,7 +2,6 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { Avatar, Grid, Typography, Divider } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import avatar from '../assets/images/cosmonaut1.jpeg';
 
 export default function SimpleProfile() {
   const { data } = useSelector((state) => state.account.account);
@@ -16,7 +15,7 @@ export default function SimpleProfile() {
           <Avatar
             style={{ cursor: 'pointer', border: '1px solid black' }}
             alt="cosmonaut1"
-            src={avatar}
+            src={data.avatar}
             onClick={() =>
               navigate('/main/profile', {
                 state: {
