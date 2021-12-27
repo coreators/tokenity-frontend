@@ -25,7 +25,7 @@ const Contents = styled.div`
   align-items: center;
   justify-content: space-between;
 `;
-const Title = styled.text`
+const Title = styled.span`
   font-weight: bold;
   font-size: 24px;
 `;
