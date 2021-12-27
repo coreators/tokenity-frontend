@@ -1,6 +1,6 @@
 # Tokenity front-end
 
-tokenity front-end 레포입니다.
+This is tokenity front-end repository.
 
 ### 1. Install
 
@@ -8,7 +8,7 @@ tokenity front-end 레포입니다.
 > npm i
 ```
 
-- 의존성 패키지가 설치된다.
+- Installed dependency packages.
 
 ### 2. Run
 
@@ -16,7 +16,7 @@ tokenity front-end 레포입니다.
 > npm run start
 ```
 
-- http://localhost:3000/ 로 접속해 로컬 디버깅
+- Connect to http://localhost:3000/, you can debug locally.
 
 ### 3. Build
 
@@ -24,4 +24,4 @@ tokenity front-end 레포입니다.
 > npm run build
 ```
 
-- static 파일 생성
+- Generate static files
