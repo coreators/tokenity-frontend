@@ -3164,6 +3164,11 @@
     "postcss" "^7.0.32"
     "postcss-value-parser" "^4.1.0"
 
+"await-of@^3.1.1":
+  "integrity" "sha512-80naavFUrZPt+XabzjaOx3MUjIsu9wxlsuWmgetDRam9Ffbn4BCYEC04DenwvXwC8bc+ueNs4mIN6bauvq48XQ=="
+  "resolved" "https://registry.npmjs.org/await-of/-/await-of-3.1.1.tgz"
+  "version" "3.1.1"
+
 "axe-core@^4.3.5":
   "integrity" "sha512-WKTW1+xAzhMS5dJsxWkliixlO/PqC4VhmO9T4juNYcaTg9jzWiJsou6m5pxWYGfigWbwzJWeFY6z47a+4neRXA=="
   "resolved" "https://registry.npmjs.org/axe-core/-/axe-core-4.3.5.tgz"
