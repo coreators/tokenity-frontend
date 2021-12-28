@@ -14,7 +14,7 @@ const Container = styled.div`
   width: 100%;
   background-color: ${headerColor};
   border-bottom: 1px solid black;
-  z-index: 1;
+  z-index: 100;
 `;
 const Contents = styled.div`
   display: flex;
