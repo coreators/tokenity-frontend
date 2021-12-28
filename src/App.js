@@ -14,8 +14,8 @@ import Login from './pages/Login';
 import Trends from './pages/Trends';
 import Wallet from './pages/Wallet';
 import HeaderBar from './components/HeaderBar';
-import LeftBar from './components/LeftBar';
-import RightBar from './components/RightBar';
+import LeftBar from './components/Side/LeftBar';
+import RightBar from './components/Side/RightBar';
 import Profile from './pages/Profile';
 import ProfileUpdate from './pages/ProfileUpdate';
 

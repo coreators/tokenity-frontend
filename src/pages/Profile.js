@@ -12,7 +12,8 @@ import {
   Typography,
 } from '@mui/material';
 import React from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 // import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import { Box } from '@mui/system';
@@ -40,12 +41,10 @@ const Button = styled.span`
 `;
 
 export default function Profile() {
+  const { data } = useSelector((state) => state.account.account);
+
   const [value, setValue] = React.useState(0);
   const navigate = useNavigate();
-  const { state } = useLocation();
-  const data = state.data;
-
-  console.log(state);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);

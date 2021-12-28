@@ -7,7 +7,7 @@ import {
   Typography,
 } from '@mui/material';
 import React from 'react';
-import { tokens } from '../dummyData';
+import { tokens } from '../../dummyData';
 
 export default function RightBar() {
   return (
