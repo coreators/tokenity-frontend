@@ -15,6 +15,10 @@ export const redColor_10p = '#FDE8E8';
 
 export const purpleColor = 'rgba(121, 7, 242, 1)';
 export const purpleColor_10p = 'rgba(121, 7, 242, 0.1)';
+export const purpleColor_50p = 'rgba(121, 7, 242, 0.5)';
+
+export const russianViolet = '#3A1B2F';
+export const indigo = '#9417E2';
 
 export const blueColor = 'rgba(106, 121, 247, 1)';
 export const blueColor_10p = 'rgba(106, 121, 247, 0.1)';

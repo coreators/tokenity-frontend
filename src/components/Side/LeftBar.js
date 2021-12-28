@@ -29,10 +29,10 @@ export default function LeftBar() {
           <Grid item md={1} />
           <Grid item md={11}>
             <Grid container rowSpacing={3}>
-              <SidebarLink text={'Home'} link={'/main'} />
-              <SidebarLink text={'Create'} link={'/'} />
+              <SidebarLink text={'Home'} link={'/main'} clicked />
+              <SidebarLink text={'Create'} link={'/main'} />
               <SidebarLink text={'Trends'} link={'/main/trends'} />
-              <SidebarLink text={'Profile'} link={'/main/profile'} />
+              <SidebarLink text={'Profile'} link={'/main/profile'} clicked />
               <SidebarLink text={'Wallet'} link={'/main/wallet'} />
               <SidebarLink text={'Notification'} link={'/main/notification'} />
             </Grid>
