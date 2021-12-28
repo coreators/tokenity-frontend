@@ -24,10 +24,10 @@ const Button = styled.span`
     color: ${russianViolet};
   }
 `;
-const SidebarLink = ({ text, link, clicked }) => {
+const SidebarLink = ({ id, text, link, clicked, setClicked }) => {
   return (
-    <Container>
-      {clicked &&
+    <Container onClick={()=>setClicked(id)}>
+      {clicked === id &&
         <CircleIcon color="secondary" sx={{ fontSize: 8, marginRight: 1, position: 'absolute', left: -12 }} />
       }
       <Link to={link} style={{ textDecoration: 'none' }}>
@@ -38,9 +38,11 @@ const SidebarLink = ({ text, link, clicked }) => {
 };
 
 SidebarLink.propTypes = {
+  id: PropTypes.number,
   text: PropTypes.string,
   link: PropTypes.string,
   clicked: PropTypes.bool,
+  setClicked: PropTypes.func,
 };
 
 export default SidebarLink;
