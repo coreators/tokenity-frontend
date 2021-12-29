@@ -33,7 +33,7 @@ const Button = styled.span`
 
 const SidebarLink = ({ id, text, link, clicked, setClicked }) => {
   return (
-    <Container onClick={() => setClicked(id)}>
+    <Container>
       {id === clicked &&
         <CircleIcon
           color="secondary"
@@ -41,7 +41,7 @@ const SidebarLink = ({ id, text, link, clicked, setClicked }) => {
         />
       }
       <Link to={link} style={{ textDecoration: 'none' }}>
-        <Button variant="text" selected={id===clicked}>
+        <Button variant="text" selected={id===clicked} onClick={() => setClicked(id)}>
           {text}
         </Button>
       </Link>
