@@ -1,12 +1,10 @@
 import React, { useState, useRef } from 'react';
 import { useDispatch } from 'react-redux';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { Avatar, Grid, Typography } from '@mui/material';
 import Stack from '@mui/material/Stack';
-import Alert from '@mui/material/Alert';
-import Snackbar from '@mui/material/Snackbar';
 
 import { yellowColor } from '../assets/colors';
 import UnauthorizedPage from '../components/UnauthorizedPage';
@@ -54,6 +52,8 @@ const Button = styled.span`
 `;
 
 export default function ProfileUpdate() {
+  const navigate = useNavigate();
+
   const { state } = useLocation();
   const data = state.data;
 
@@ -64,23 +64,24 @@ export default function ProfileUpdate() {
   const [name, setName] = useState(data.name);
   const [description, setDescription] = useState(data.description);
   const [image, setImage] = useState(data.avatar);
-  const [open, setOpen] = useState(false);
 
   const handleName = (event) => {
-    setName(event.target.value);
+    let input = event.target.value;
+    if (input.length > 10){
+      input = input.slice(0, 10);
+    }
+    setName(input);
   };
   const handleDescription = (event) => {
-    setDescription(event.target.value);
+    let input = event.target.value;
+    if (input.length > 10){
+      input = input.slice(0, 300);
+    }
+    setDescription(input);
   };
 
   const handleClick = () => {
     hiddenFileInput.current.click();
-  };
-  const handleClose = (reason) => {
-    if (reason === 'clickaway') {
-      return;
-    }
-    setOpen(false);
   };
 
   const updateClicked = () => {
@@ -92,7 +93,8 @@ export default function ProfileUpdate() {
       description: description,
     };
     dispatch(setProfile(account));
-    setOpen(true);
+
+    navigate('/main/profile');
   };
 
   const onImgChange = async (event) => {
@@ -158,14 +160,6 @@ export default function ProfileUpdate() {
           <Button onClick={updateClicked}>Update Profile</Button>
         </Grid>
       </Grid>
-      <Snackbar
-        anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-        open={open}
-        autoHideDuration={3000}
-        onClose={handleClose}
-      >
-        <Alert severity="success">Profile has been updated successfully.</Alert>
-      </Snackbar>
     </Stack>
   );
 }

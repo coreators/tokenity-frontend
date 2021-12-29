@@ -7,6 +7,7 @@ import {
   CREATE_ACCOUNT,
   IMPORT_ACCOUNT,
   SET_PROFILE,
+  LOGOUT,
 } from './constants';
 
 export const init = () => ({ type: INIT_ACCOUNT });
@@ -20,6 +21,7 @@ export const importAccount = (data) => ({
   payload: data,
 });
 export const setProfile = (data) => ({ type: SET_PROFILE, payload: data });
+export const logout = () => ({ type: LOGOUT });
 
 const createAccountSaga = createPromiseSaga(CREATE_ACCOUNT, accountAPI.create);
 const importAccountSaga = createPromiseSaga(

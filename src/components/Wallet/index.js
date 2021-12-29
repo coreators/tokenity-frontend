@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
-import Modal from '@mui/material/Modal';
-import Box from '@mui/material/Box';
+// import Modal from '@mui/material/Modal';
+// import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import Alert from '@mui/material/Alert';
 import Snackbar from '@mui/material/Snackbar';
 import { of } from 'await-of';
 
 import { checkKeplr, getCosmosClient } from '../../utils/wallet';
-import WalletModal from './WalletModal';
+import { setProfile } from '../../modules/account/actions';
+import { getHash } from '../../utils/crypto';
+// import WalletModal from './WalletModal';
 
 const Container = styled.div`
   display: flex;
@@ -40,6 +43,8 @@ const Wallet = () => {
   const [open, setOpen] = useState(false);
   const handleClose = () => setOpen(false);
 
+  const dispatch = useDispatch();
+
   const handleOpen = async () => {
     const chainId = 'cosmoshub-4';
     const [, err] = await of(checkKeplr(chainId));
@@ -50,8 +55,24 @@ const Wallet = () => {
         setOpen(true);
       }
     } else {
-      const client = await getCosmosClient(chainId);
-      console.log(client);
+      const [client, err] = await of(getCosmosClient(chainId));
+      if (err){
+        console.error(err);
+        return;
+      }
+
+      const address = client.signerAddress;
+      const name = getHash(address);
+      console.log(name);
+      const account = {
+        name: name,
+        password: '',
+        address: address,
+        avatar: undefined,
+        description: '',
+      };
+
+      dispatch(setProfile(account));
     }
   };
 
@@ -62,7 +83,7 @@ const Wallet = () => {
           <Text>Connect Keplr Wallet</Text>
         </Container>
 
-        <Modal
+        {/* <Modal
           onClose={handleClose}
           aria-labelledby="modal-modal-title"
           aria-describedby="modal-modal-description"
@@ -70,7 +91,7 @@ const Wallet = () => {
           <Box>
             <WalletModal handleClose={handleClose} />
           </Box>
-        </Modal>
+        </Modal> */}
         <Snackbar
           anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
           open={open}

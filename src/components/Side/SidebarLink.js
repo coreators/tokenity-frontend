@@ -16,7 +16,13 @@ const Container = styled.div`
 `;
 
 const Button = styled.span`
-  color: grey;
+  color: ${(props) => {
+    if (props.selected) {
+      return 'black';
+    } else {
+      return 'grey';
+    }
+  }};
   font-size: 18px;
   font-family: 'Roboto';
 
@@ -24,14 +30,20 @@ const Button = styled.span`
     color: ${russianViolet};
   }
 `;
+
 const SidebarLink = ({ id, text, link, clicked, setClicked }) => {
   return (
-    <Container onClick={()=>setClicked(id)}>
-      {clicked === id &&
-        <CircleIcon color="secondary" sx={{ fontSize: 8, marginRight: 1, position: 'absolute', left: -12 }} />
+    <Container>
+      {id === clicked &&
+        <CircleIcon
+          color="secondary"
+          sx={{ fontSize: 8, marginRight: 1, position: 'absolute', left: -12 }}
+        />
       }
       <Link to={link} style={{ textDecoration: 'none' }}>
-        <Button variant="text">{text}</Button>
+        <Button variant="text" selected={id===clicked} onClick={() => setClicked(id)}>
+          {text}
+        </Button>
       </Link>
     </Container>
   );
@@ -41,7 +53,7 @@ SidebarLink.propTypes = {
   id: PropTypes.number,
   text: PropTypes.string,
   link: PropTypes.string,
-  clicked: PropTypes.bool,
+  clicked: PropTypes.number,
   setClicked: PropTypes.func,
 };
 
