@@ -218,17 +218,23 @@ export default function Profile() {
                 </Grid>
               </Grid>
             </Grid>
-            <Grid item md={12}>
-              <Typography>{data.description}</Typography>
-            </Grid>
+            {data.description && (
+              <Grid item md={12}>
+                <Typography style={{ wordBreak: 'break-all' }}>
+                  {data.description}
+                </Typography>
+              </Grid>
+            )}
           </Grid>
         </Grid>
 
         <Grid item md={2}>
           <Typography style={{ fontWeight: 'bold' }}>Address</Typography>
         </Grid>
-        <Grid item md={7}>
-          <Typography style={{ fontWeight: 'bold' }}>{data.address}</Typography>
+        <Grid item md={10}>
+          <Typography style={{ fontWeight: 'bold', wordBreak: 'break-all' }}>
+            {data.address}
+          </Typography>
         </Grid>
         <Grid item md={12}>
           <Box>
@@ -246,7 +252,3 @@ export default function Profile() {
     </>
   );
 }
-
-// Profile.propTypes = {
-//   data: PropTypes.any,
-// };

@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { Grid } from '@mui/material';
 
 import Wallet from '../Wallet';
-import SimpleProfile from '../SimpleProfile';
+import SimpleProfile from '../Profile/SimpleProfile';
 import SidebarLink from './SidebarLink';
 
 // const Container = styled.span`

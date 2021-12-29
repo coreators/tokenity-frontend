@@ -1,11 +1,21 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Avatar, Grid, Typography, Divider } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
+
+const DescriptionContainer = styled.div`
+  display:-webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  word-wrap: break-word;
+  overflow: hidden;
+  text-overflow: ellipsis;
+`;
 
 export default function SimpleProfile() {
   const { data } = useSelector((state) => state.account.account);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   return (
     <>
@@ -16,13 +26,7 @@ export default function SimpleProfile() {
             style={{ cursor: 'pointer', border: '1px solid black' }}
             alt="cosmonaut1"
             src={data.avatar}
-            onClick={() =>
-              navigate('/main/profile', {
-                state: {
-                  data,
-                },
-              })
-            }
+            // onClick={() => navigate('/main/profile')}
           />
         </Grid>
         <Grid item md={8}>
@@ -43,10 +47,10 @@ export default function SimpleProfile() {
         {data.description && (
           <>
             <Grid item md={1} />
-            <Grid item md={10}>
-              <div>
+            <Grid item md={10} style={{ padding: 0 }}>
+              <DescriptionContainer>
                 <Typography>{data.description}</Typography>
-              </div>
+              </DescriptionContainer>
             </Grid>
             <Grid item md={1} />
           </>
