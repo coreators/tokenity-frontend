@@ -10,6 +10,7 @@ import { yellowColor } from '../assets/colors';
 import UnauthorizedPage from '../components/UnauthorizedPage';
 import { CssTextField } from '../styled/TextField';
 import { setProfile } from '../modules/account/actions';
+// import { addData } from '../utils/ipfs';
 
 const ImgButton = styled.span`
   width: 120px;
@@ -94,6 +95,7 @@ export default function ProfileUpdate() {
     };
     dispatch(setProfile(account));
 
+    // addData();
     navigate('/main/profile');
   };
 
