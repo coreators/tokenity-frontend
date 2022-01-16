@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
+// import styled from 'styled-components';
 import { Grid } from '@mui/material';
 
 import Wallet from '../Wallet';
@@ -17,7 +18,7 @@ import SidebarLink from './SidebarLink';
 
 const linkArr = [
   { text: 'Home', link: '/main' },
-  { text: 'Create', link: '/main' },
+  // { text: 'Create', link: '/main' },
   { text: 'Trends', link: '/main/trends' },
   { text: 'Profile', link: '/main/profile' },
   { text: 'Wallet', link: '/main/wallet' },

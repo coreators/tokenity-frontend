@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router';
-// import { Grid, Typography } from '@mui/material';
-// import { Link } from 'react-router-dom';
+import Modal from '@mui/material/Modal';
+import Box from '@mui/material/Box';
 import styled from 'styled-components';
+import AddBoxIcon from '@mui/icons-material/AddBox';
 
 import { headerColor } from '../assets/colors';
+import WalletModal from './Wallet/WalletModal';
 
 const Container = styled.div`
   position: fixed;
@@ -34,26 +36,51 @@ const Button = styled.button`
   border-width: 0px;
   background-color: ${headerColor};
 `;
+
+const PostButton = styled.div`
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
+  &:hover {
+
+  }
+`;
+const PostText = styled.span`
+  font-size: 18px;
+  font-family: 'Roboto';
+  margin-left: 5px;
+`;
 export default function HeaderBar() {
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
   const navigate = useNavigate();
 
   return (
     <Container>
       <Contents>
-        <Button onClick={()=>navigate('/main')} >
+        <Button onClick={() => navigate('/main')} >
           <Title>Tokenity</Title>
         </Button>
+        <PostButton onClick={handleOpen}>
+          <AddBoxIcon />
+          <PostText>
+            Create Post
+          </PostText>
+        </PostButton>
       </Contents>
-      {/* <Grid container>
-        <Grid item md={8} align="center">
-          <Link to="/main">
-            <Typography>Tokenity</Typography>
-          </Link>
-        </Grid>
-        <Grid item md={4}>
-          <Typography>search</Typography>
-        </Grid>
-      </Grid> */}
+        <Modal
+        open={open}
+          onClose={handleClose}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+        >
+          <Box>
+            <WalletModal handleClose={handleClose} />
+          </Box>
+        </Modal>
     </Container>
   );
 }
