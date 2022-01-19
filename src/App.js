@@ -13,7 +13,7 @@ import Notification from './pages/Notification';
 import Login from './pages/Login';
 import Trends from './pages/Trends';
 import Wallet from './pages/Wallet';
-import HeaderBar from './components/HeaderBar';
+import Header from './components/Header';
 import LeftBar from './components/Side/LeftBar';
 import RightBar from './components/Side/RightBar';
 import Profile from './pages/Profile';
@@ -33,7 +33,7 @@ const App = () => {
           path="/main"
           element={
             <>
-              <HeaderBar />
+              <Header />
               <Container>
                 <Grid container>
                   <LeftBar />

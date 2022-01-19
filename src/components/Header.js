@@ -6,7 +6,8 @@ import styled from 'styled-components';
 import AddBoxIcon from '@mui/icons-material/AddBox';
 
 import { headerColor } from '../assets/colors';
-import WalletModal from './Wallet/WalletModal';
+import img from '../assets/images/imgTest.jpeg';
+import ModalCreate from './Post/ModalCreate';
 
 const Container = styled.div`
   position: fixed;
@@ -51,7 +52,7 @@ const PostText = styled.span`
   font-family: 'Roboto';
   margin-left: 5px;
 `;
-export default function HeaderBar() {
+export default function Header() {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -71,16 +72,16 @@ export default function HeaderBar() {
           </PostText>
         </PostButton>
       </Contents>
-        <Modal
+      <Modal
         open={open}
-          onClose={handleClose}
-          aria-labelledby="modal-modal-title"
-          aria-describedby="modal-modal-description"
-        >
-          <Box>
-            <WalletModal handleClose={handleClose} />
-          </Box>
-        </Modal>
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box>
+          <ModalCreate handleClose={handleClose} img={img} />
+        </Box>
+      </Modal>
     </Container>
   );
 }
