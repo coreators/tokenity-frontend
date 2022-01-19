@@ -1,0 +1,1 @@
+export const maxContentLength = 2200;

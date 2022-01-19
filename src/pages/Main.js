@@ -1,24 +1,24 @@
 import { Grid } from '@mui/material';
 // import { Grid, Box, Tabs, Tab } from '@mui/material';
 import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+// import { useDispatch } from 'react-redux';
 
 import View from '../components/Post/View';
-import { getPosts } from '../modules/posts/actions';
+// import { getPosts } from '../modules/posts/actions';
 
 import img from '../assets/images/imgTest.jpeg';
 import img2 from '../assets/images/cosmos.jpeg';
 
 export default function Main() {
   // const [value, setValue] = React.useState(0);
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   // const handleChange = (event, newValue) => {
   //   setValue(newValue);
   // };
 
   useEffect(() => {
-    dispatch(getPosts({}));
+    // dispatch(getPosts({}));
   }, []);
 
   return (

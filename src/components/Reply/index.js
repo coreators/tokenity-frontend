@@ -27,7 +27,7 @@ const PostButton = styled.span`
 const Reply = () => {
   return (
     <Container>
-      <InputBase sx={{ ml: 1, flex: 1 }} placeholder="Add a comment..." />
+      <InputBase sx={{ ml: 1, flex: 1 }} placeholder="Add a comment..." multiline maxRows="4" />
       <PostButton>Post</PostButton>
     </Container>
   );

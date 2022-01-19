@@ -1,17 +1,22 @@
 import React, { useState } from 'react';
-// import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
-import Modal from '@mui/material/Modal';
-import Box from '@mui/material/Box';
-// import { useDispatch } from 'react-redux';
+// import Modal from '@mui/material/Modal';
+// import Box from '@mui/material/Box';
+import Stack from '@mui/material/Stack';
+import Alert from '@mui/material/Alert';
+import Snackbar from '@mui/material/Snackbar';
+import { of } from 'await-of';
 
-// import { createAccount } from '../../modules/account';
-import WalletModal from './WalletModal';
+import { checkKeplr, getCosmosClient } from '../../utils/wallet';
+import { setProfile } from '../../modules/account/actions';
+import { getHash } from '../../utils/crypto';
+// import WalletModal from './WalletModal';
 
 const Container = styled.div`
   display: flex;
-  width: 150px;
-  height: 50px;
+  width: 180px;
+  height: 40px;
   border: 1px solid black;
   border-radius: 10px;
   align-items: center;
@@ -36,35 +41,66 @@ const Text = styled.span`
 
 const Wallet = () => {
   const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   create();
-  // }, []);
+  const handleOpen = async () => {
+    const chainId = 'cosmoshub-4';
+    const [, err] = await of(checkKeplr(chainId));
+    if (err) {
+      if (err.name == 'NotFoundError') {
+        window.open('https://www.keplr.app/', '_blank');
+      } else {
+        setOpen(true);
+      }
+    } else {
+      const [client, err] = await of(getCosmosClient(chainId));
+      if (err){
+        console.error(err);
+        return;
+      }
 
-  // const create = async () => {
-  //   dispatch(createAccount({name:'Taeha', password:'950309'}));
-  // };
+      const address = client.signerAddress;
+      const name = getHash(address);
+      console.log(name);
+      const account = {
+        name: name,
+        password: '',
+        address: address,
+        avatar: undefined,
+        description: '',
+      };
+
+      dispatch(setProfile(account));
+    }
+  };
 
   return (
     <>
-      <Container onClick={handleOpen}>
-        <Text>Wallet</Text>
-      </Container>
+      <Stack sx={{ width: '100%' }} spacing={2}>
+        <Container onClick={handleOpen}>
+          <Text>Connect Keplr Wallet</Text>
+        </Container>
 
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box>
-          <WalletModal handleClose={handleClose} />
-        </Box>
-      </Modal>
+        {/* <Modal
+          onClose={handleClose}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+        >
+          <Box>
+            <WalletModal handleClose={handleClose} />
+          </Box>
+        </Modal> */}
+        <Snackbar
+          anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+          open={open}
+          autoHideDuration={3000}
+          onClose={handleClose}
+        >
+          <Alert severity="error">Please signin your keplr wallet.</Alert>
+        </Snackbar>
+      </Stack>
     </>
   );
 };

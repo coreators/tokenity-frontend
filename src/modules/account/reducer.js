@@ -8,6 +8,7 @@ import {
   IMPORT_ACCOUNT_SUCCESS,
   IMPORT_ACCOUNT_ERROR,
   SET_PROFILE,
+  LOGOUT,
 } from './constants';
 
 const initialState = {
@@ -54,6 +55,13 @@ export default function account(state = initialState, action) {
           loading: false,
           error: null,
         },
+      };
+    }
+
+    case LOGOUT: {
+      return {
+        ...state,
+        account: reducerUtils.initial(),
       };
     }
 

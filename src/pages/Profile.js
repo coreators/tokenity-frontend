@@ -12,11 +12,12 @@ import {
   Typography,
 } from '@mui/material';
 import React from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 // import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import { Box } from '@mui/system';
-import { avatar, postImg, postImgs, tokens } from '../dummyData';
+import { postImg, postImgs, tokens } from '../dummyData';
 import { yellowColor } from '../assets/colors';
 import UnauthorizedPage from '../components/UnauthorizedPage';
 
@@ -40,12 +41,10 @@ const Button = styled.span`
 `;
 
 export default function Profile() {
+  const { data } = useSelector((state) => state.account.account);
+
   const [value, setValue] = React.useState(0);
   const navigate = useNavigate();
-  const { state } = useLocation();
-  const data = state.data;
-
-  console.log(state);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -126,7 +125,7 @@ export default function Profile() {
           >
             <Grid container>
               <Grid item md={1}>
-                <Avatar src={avatar} />
+                <Avatar src={data.avatar} />
               </Grid>
               <Grid item md={11}>
                 <Grid container rowSpacing={1}>
@@ -164,7 +163,7 @@ export default function Profile() {
       <Grid container rowSpacing={4}>
         <Grid item md={4} align="center">
           <Avatar
-            src={avatar}
+            src={data.avatar}
             sx={{ width: 120, height: 120 }}
             style={{ border: '1px solid black' }}
           />
@@ -219,17 +218,23 @@ export default function Profile() {
                 </Grid>
               </Grid>
             </Grid>
-            <Grid item md={12}>
-              <Typography>{data.description}</Typography>
-            </Grid>
+            {data.description && (
+              <Grid item md={12}>
+                <Typography style={{ wordBreak: 'break-all' }}>
+                  {data.description}
+                </Typography>
+              </Grid>
+            )}
           </Grid>
         </Grid>
 
         <Grid item md={2}>
           <Typography style={{ fontWeight: 'bold' }}>Address</Typography>
         </Grid>
-        <Grid item md={7}>
-          <Typography style={{ fontWeight: 'bold' }}>{data.address}</Typography>
+        <Grid item md={10}>
+          <Typography style={{ fontWeight: 'bold', wordBreak: 'break-all' }}>
+            {data.address}
+          </Typography>
         </Grid>
         <Grid item md={12}>
           <Box>
@@ -247,7 +252,3 @@ export default function Profile() {
     </>
   );
 }
-
-// Profile.propTypes = {
-//   data: PropTypes.any,
-// };
